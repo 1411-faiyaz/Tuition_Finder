@@ -29,7 +29,7 @@ A tuition/tutor marketplace web app — guardians post tuition requirements, tut
 - **Tutor:** build a profile, browse the tuition board, apply to posts, track application status
 - **Admin:** approve/reject tutor accounts, moderate tuition posts, manage all users
 - **Messaging:** guardians and tutors can message each other
-- **🤖 Tutor Salary Prediction Assistant:** a guided chat UI, tutor-only, that walks through area / class / curriculum / subject / schedule and returns a real ML-predicted monthly salary estimate (via a CatBoost model served by a separate Python microservice)
+- **Tutor Salary Prediction Assistant:** a guided chat UI, tutor-only, that walks through area / class / curriculum / subject / schedule and returns a real ML-predicted monthly salary estimate (via a CatBoost model served by a separate Python microservice)
 - Client-side (JS) + server-side (PHP) validation everywhere; passwords hashed with `password_hash()`; all queries use prepared statements
 
 ---
