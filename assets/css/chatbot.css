@@ -1,0 +1,138 @@
+/* ==========================================================
+   Tutor Salary Prediction Assistant - chatbot UI
+   Builds on the :root variables already defined in style.css
+   ========================================================== */
+
+.chatbot-page{ padding:32px 0 60px; }
+.chatbot-intro{ max-width:640px; margin:0 auto 22px; text-align:center; }
+.chatbot-intro h1{ margin:0 0 8px; font-size:1.9rem; }
+.chatbot-intro p{ color:var(--muted); margin:0; }
+
+.chatbot-card{
+  max-width:640px; margin:0 auto; background:var(--white);
+  border-radius:18px; overflow:hidden; box-shadow:0 12px 34px rgba(15,23,42,.12);
+  border:1px solid var(--border);
+  display:flex; flex-direction:column; height:min(680px, 75vh);
+}
+
+/* ---------- Header ---------- */
+.chatbot-header{
+  background:linear-gradient(120deg, #2f6fed 0%, #6d5ce7 55%, #8a4fe8 100%);
+  color:#fff; padding:18px 20px; display:flex; align-items:center; gap:14px;
+  flex-shrink:0;
+}
+.chatbot-avatar{
+  width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.18);
+  display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;
+  border:1px solid rgba(255,255,255,.35);
+}
+.chatbot-header-text{ flex:1; min-width:0; }
+.chatbot-header-text .name{ font-weight:700; font-size:1.02rem; }
+.chatbot-header-text .status{ font-size:.78rem; opacity:.9; display:flex; align-items:center; gap:6px; }
+.chatbot-header-text .status .dot{
+  width:7px; height:7px; border-radius:50%; background:#4ade80; display:inline-block;
+}
+.chatbot-reset{
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4); color:#fff;
+  border-radius:8px; padding:7px 12px; font-size:.8rem; font-weight:600; cursor:pointer;
+  flex-shrink:0; transition:background .15s ease;
+}
+.chatbot-reset:hover{ background:rgba(255,255,255,.28); }
+
+/* ---------- Message area ---------- */
+.chatbot-messages{
+  flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:14px;
+  background:
+    radial-gradient(circle at 10% 0%, #eef2ff 0%, transparent 45%),
+    radial-gradient(circle at 90% 100%, #f5f3ff 0%, transparent 45%),
+    var(--bg);
+}
+
+.cb-row{ display:flex; gap:10px; align-items:flex-end; max-width:88%; }
+.cb-row.bot{ align-self:flex-start; }
+.cb-row.user{ align-self:flex-end; flex-direction:row-reverse; }
+
+.cb-avatar{
+  width:30px; height:30px; border-radius:50%; flex-shrink:0; display:flex;
+  align-items:center; justify-content:center; font-size:1rem;
+}
+.cb-row.bot .cb-avatar{ background:var(--primary-light); }
+.cb-row.user .cb-avatar{ background:#dcfce7; }
+
+.cb-bubble{
+  padding:11px 15px; border-radius:16px; font-size:.92rem; line-height:1.45;
+  box-shadow:0 2px 6px rgba(15,23,42,.05);
+}
+.cb-row.bot .cb-bubble{
+  background:#fff; border:1px solid var(--border); color:var(--text);
+  border-bottom-left-radius:4px;
+}
+.cb-row.user .cb-bubble{
+  background:linear-gradient(120deg, var(--primary), #6d5ce7); color:#fff;
+  border-bottom-right-radius:4px;
+}
+.cb-bubble.cb-error{ border-color:#fecaca; background:#fef2f2; color:var(--red); }
+.cb-time{ display:block; font-size:.68rem; margin-top:5px; opacity:.65; }
+
+/* Quick-reply pills */
+.cb-choices{ display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 0 40px; max-width:88%; }
+.cb-choice-btn{
+  background:var(--primary-light); color:var(--primary-dark); border:1px solid #c9d9fb;
+  border-radius:999px; padding:7px 14px; font-size:.83rem; font-weight:600; cursor:pointer;
+  transition:transform .1s ease, background .15s ease;
+}
+.cb-choice-btn:hover{ background:var(--primary); color:#fff; transform:translateY(-1px); }
+.cb-choice-btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
+
+/* Typing indicator */
+.cb-typing{ display:flex; gap:4px; align-items:center; padding:4px 2px; }
+.cb-typing span{
+  width:7px; height:7px; border-radius:50%; background:var(--muted); opacity:.5;
+  animation:cbTypingBounce 1.1s infinite ease-in-out;
+}
+.cb-typing span:nth-child(2){ animation-delay:.15s; }
+.cb-typing span:nth-child(3){ animation-delay:.3s; }
+@keyframes cbTypingBounce{
+  0%, 60%, 100%{ transform:translateY(0); opacity:.5; }
+  30%{ transform:translateY(-4px); opacity:1; }
+}
+
+/* Result card */
+.cb-result{
+  background:linear-gradient(135deg, #eef2ff, #f5f3ff); border:1px solid #dfe3fb;
+  border-radius:14px; padding:18px 20px; margin-top:2px;
+}
+.cb-result .label{ font-size:.78rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.04em; }
+.cb-result .amount{ font-size:1.9rem; font-weight:800; color:var(--primary-dark); margin:4px 0 10px; }
+.cb-result .summary{ font-size:.82rem; color:var(--muted); border-top:1px dashed #dfe3fb; padding-top:10px; margin-top:8px; }
+.cb-result .summary div{ display:flex; justify-content:space-between; padding:2px 0; }
+.cb-result .explain{ font-size:.85rem; color:var(--text); margin-top:10px; line-height:1.5; }
+
+/* ---------- Input bar ---------- */
+.chatbot-inputbar{
+  display:flex; gap:10px; padding:14px 16px; border-top:1px solid var(--border);
+  background:#fff; flex-shrink:0;
+}
+.chatbot-inputbar input[type=text]{
+  flex:1; border:1px solid var(--border); border-radius:999px; padding:11px 18px;
+  font-size:.92rem; background:var(--bg);
+}
+.chatbot-inputbar input[type=text]:focus{
+  outline:none; border-color:var(--primary); background:#fff;
+  box-shadow:0 0 0 3px var(--primary-light);
+}
+.chatbot-inputbar input[type=text]:disabled{ opacity:.6; }
+.chatbot-send{
+  width:44px; height:44px; border-radius:50%; border:none; flex-shrink:0;
+  background:linear-gradient(120deg, var(--primary), #6d5ce7); color:#fff;
+  font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:opacity .15s ease, transform .1s ease;
+}
+.chatbot-send:hover{ transform:translateY(-1px); }
+.chatbot-send:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
+
+@media (max-width:640px){
+  .chatbot-card{ height:min(600px, 82vh); border-radius:12px; }
+  .cb-row{ max-width:94%; }
+  .cb-choices{ margin-left:36px; max-width:94%; }
+}

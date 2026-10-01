@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Python model/cache files
+*.log
+
+# Local configuration
+config/db.php
+config/backend.php
+
+# Environment/secrets
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# XAMPP/local files
+xampp/
